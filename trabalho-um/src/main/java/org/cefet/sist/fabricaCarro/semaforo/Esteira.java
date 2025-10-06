@@ -28,7 +28,9 @@ class Esteira {
     }
 
     public Chassi removerChassi(String consumidor) throws InterruptedException {
+        System.out.println("thread consumidora pegando acquire de itens (wait(empty)).");
         itens.acquire();        // espera ter item
+        System.out.println("thread entrou dentro do acquire apos produção.");
         mutex.acquire();        // exclusão mútua
         Chassi chassi = fila.poll();
         System.out.println(consumidor + " instalou motor no Chassi-" + chassi.getId());
